@@ -1,15 +1,11 @@
-import express from "express";
+import express from "express"
+import * as v1Workout from "./v1/routes/workoutRoutes"
+
 const app = express();
-const port = 3000;
+const PORT = process.env.PORT || 3000;
 
-app.get("/", (req, res) => {
-  res.send("Hello World!");
-});
+app.use("/api/v1", v1Workout.router);
 
-app.get("/waste", (req, res) => {
-  res.send("waste")
-});
-
-app.listen(port, () => {
-  return console.log(`App is running on http://localhost:${port}`);
+app.listen(PORT, () => {
+  console.log(`API is listening on port ${PORT}`);
 });
